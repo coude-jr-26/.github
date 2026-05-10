@@ -1,0 +1,43 @@
+name: Good First Issue
+description: A task suitable for junior developers
+labels: ["good first issue", "status: needs-triage"]
+body:
+  - type: textarea
+    id: what
+    attributes:
+      label: What to do
+      description: Plain language description
+    validations:
+      required: true
+  - type: textarea
+    id: where
+    attributes:
+      label: Where to look
+      placeholder: |
+        - File: `src/modules/contacts/contacts.service.ts`
+        - Function: `findAll()`
+    validations:
+      required: true
+  - type: textarea
+    id: criteria
+    attributes:
+      label: Acceptance Criteria
+      placeholder: |
+        - [ ] Criterion 1
+        - [ ] Criterion 2
+    validations:
+      required: true
+  - type: textarea
+    id: hints
+    attributes:
+      label: Hints
+      description: Optional tips, links, or approach suggestions
+  - type: dropdown
+    id: difficulty
+    attributes:
+      label: Difficulty
+      options:
+        - "⭐ Beginner (2–4 hours)"
+        - "⭐⭐ Intermediate (4–8 hours)"
+    validations:
+      required: true

@@ -1,0 +1,52 @@
+name: New Candidate
+description: Track a technical challenge candidate
+labels: ["recruitment"]
+body:
+  - type: input
+    id: name
+    attributes:
+      label: Candidate Name
+    validations:
+      required: true
+  - type: dropdown
+    id: role
+    attributes:
+      label: Role Applied
+      options:
+        - Backend Developer
+        - Frontend Developer
+        - Fullstack Developer
+        - DevOps Engineer
+        - QA Engineer
+    validations:
+      required: true
+  - type: dropdown
+    id: challenge
+    attributes:
+      label: Challenge Type
+      options:
+        - challenge-backend-node
+        - challenge-frontend-react
+        - challenge-fullstack
+    validations:
+      required: true
+  - type: input
+    id: repo
+    attributes:
+      label: Evaluation Repo Name
+      placeholder: "eval-backend-jsilva-202506"
+  - type: input
+    id: deadline
+    attributes:
+      label: Submission Deadline
+      placeholder: "YYYY-MM-DD"
+  - type: dropdown
+    id: status
+    attributes:
+      label: Current Status
+      options:
+        - Invited
+        - In Progress
+        - Submitted
+        - Under Review
+        - Decision Made

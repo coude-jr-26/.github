@@ -1,0 +1,39 @@
+name: RFC (Architecture Decision)
+description: Propose an architecture or process change
+labels: ["rfc: needs-discussion"]
+body:
+  - type: input
+    id: title
+    attributes:
+      label: RFC Title
+      placeholder: "RFC-001: Choose database ORM"
+    validations:
+      required: true
+  - type: textarea
+    id: context
+    attributes:
+      label: Context
+      description: Why is this decision needed now?
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposal
+    validations:
+      required: true
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives Considered
+    validations:
+      required: true
+  - type: textarea
+    id: tradeoffs
+    attributes:
+      label: Trade-offs
+  - type: input
+    id: deadline
+    attributes:
+      label: Decision Deadline
+      placeholder: "YYYY-MM-DD"
