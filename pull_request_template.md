@@ -1,32 +1,32 @@
-## Summary
-<!-- One sentence: what does this PR do and why? -->
+## Resumo
+<!-- Uma frase: o que este PR faz e por quê? -->
 
-## Type of Change
-- [ ] Feature (new functionality)
-- [ ] Fix (bug correction)
-- [ ] Refactor (code restructure, no behavior change)
-- [ ] Docs
-- [ ] Test
-- [ ] Chore (tooling, dependencies)
+## Tipo de alteração
+- [ ] Funcionalidade (nova feature)
+- [ ] Correção (ajuste de bug)
+- [ ] Refatoração (reestruturação de código, sem mudança de comportamento)
+- [ ] Documentação
+- [ ] Testes
+- [ ] Chore (ferramentas, dependências)
 
-## Related Issue
-Closes #
+## Issue relacionada
+Fecha #
 
-## Changes Made
+## Alterações realizadas
 -
 -
 
-## Testing
-- [ ] Unit tests added/updated
-- [ ] Manual testing done
-- [ ] No test needed (explain why)
+## Testes
+- [ ] Testes unitários adicionados/atualizados
+- [ ] Teste manual realizado
+- [ ] Não precisa de teste (explique o motivo)
 
-## Screenshots / Evidence
-<!-- Required for UI changes -->
+## Capturas de tela / Evidências
+<!-- Obrigatório para alterações de UI -->
 
 ## Checklist
-- [ ] Code follows project coding standards
-- [ ] Documentation added/updated where relevant
-- [ ] No new linter warnings
-- [ ] No console.log / debug statements left in code
-- [ ] Secrets are NOT hardcoded
+- [ ] O código segue os padrões do projeto
+- [ ] Documentação adicionada/atualizada quando relevante
+- [ ] Sem novos avisos do linter
+- [ ] Sem `console.log` / instruções de debug no código
+- [ ] Segredos NÃO estão hardcoded
