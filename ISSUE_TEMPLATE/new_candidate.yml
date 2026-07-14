@@ -1,52 +1,123 @@
-name: New Candidate
-description: Track a technical challenge candidate
-labels: ["recruitment"]
+name: Novo candidato
+description: Registre um candidato do processo seletivo técnico
+title: "[Candidato] "
+labels: ["recruitment", "status: needs-triage"]
+
 body:
-  - type: input
-    id: name
+  - type: markdown
     attributes:
-      label: Candidate Name
+      value: |
+        Use este formulário apenas em repositório privado.
+
+        Este formulário pode conter dados pessoais de candidatos. Não use em repositório público.
+
+        Registre somente as informações necessárias para acompanhamento do processo seletivo.
+
+  - type: input
+    id: candidate_name
+    attributes:
+      label: Nome do candidato
+      description: "Informe o nome do candidato."
+      placeholder: "Nome completo"
     validations:
       required: true
+
+  - type: input
+    id: github_username
+    attributes:
+      label: Username do GitHub
+      description: "Informe o username do GitHub, se já tiver sido enviado."
+      placeholder: "usuario-github"
+
   - type: dropdown
     id: role
     attributes:
-      label: Role Applied
+      label: Área de candidatura
       options:
-        - Backend Developer
-        - Frontend Developer
-        - Fullstack Developer
-        - DevOps Engineer
-        - QA Engineer
+        - Backend
+        - Frontend
+        - Full Stack
+        - QA
+        - DevOps
+        - Engenharia de Dados
+        - Documentação
+        - GitHub e Governança
     validations:
       required: true
+
   - type: dropdown
-    id: challenge
+    id: challenge_type
     attributes:
-      label: Challenge Type
+      label: Tipo de desafio técnico
       options:
-        - challenge-backend-node
-        - challenge-frontend-react
-        - challenge-fullstack
+        - Backend - API de gerenciamento de usuários
+        - Frontend - Interface consumindo API
+        - Full Stack - Mini sistema com autenticação
+        - QA - Plano e casos de teste
+        - DevOps - Docker e Docker Compose
+        - Engenharia de Dados - Pipeline ETL simples
+        - Documentação - README, Swagger e diagramas
+        - GitHub e Governança - Branches, templates e proteção
     validations:
       required: true
+
   - type: input
-    id: repo
+    id: evaluation_repo
     attributes:
-      label: Evaluation Repo Name
-      placeholder: "eval-backend-jsilva-202506"
+      label: Repositório de avaliação
+      description: "Informe o nome do repositório de avaliação, se existir."
+      placeholder: "eval-backend-nome-202607"
+
   - type: input
     id: deadline
     attributes:
-      label: Submission Deadline
-      placeholder: "YYYY-MM-DD"
+      label: Prazo de entrega
+      description: "Informe a data limite de entrega."
+      placeholder: "2026-07-20"
+
   - type: dropdown
     id: status
     attributes:
-      label: Current Status
+      label: Status atual
       options:
-        - Invited
-        - In Progress
-        - Submitted
-        - Under Review
-        - Decision Made
+        - convidado
+        - em andamento
+        - entregue
+        - em revisão
+        - aprovado
+        - reprovado
+        - desistiu
+    validations:
+      required: true
+
+  - type: input
+    id: reviewer
+    attributes:
+      label: Avaliador responsável
+      description: "Informe quem vai revisar ou acompanhar o candidato."
+      placeholder: "Thiago Cerqueira"
+
+  - type: textarea
+    id: evaluation_notes
+    attributes:
+      label: Observações da avaliação
+      description: "Registre observações técnicas relevantes, sem informações pessoais desnecessárias."
+      placeholder: |
+        Pontos fortes:
+        - 
+
+        Pontos de atenção:
+        - 
+
+        Recomendação:
+        -
+
+  - type: checkboxes
+    id: privacy_confirmation
+    attributes:
+      label: Confirmação de privacidade
+      options:
+        - label: Confirmo que este registro está em repositório privado.
+          required: true
+        - label: Confirmo que não incluí dados pessoais desnecessários, documentos, senhas, tokens ou informações sensíveis.
+          required: true

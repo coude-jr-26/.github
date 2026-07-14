@@ -1,30 +1,154 @@
-name: Feature Request
-description: Propose a new feature or improvement
+name: Solicitação de funcionalidade
+description: Proponha uma nova funcionalidade ou melhoria para o CRM
+title: "[Feature] "
 labels: ["type: feature", "status: needs-triage"]
+
 body:
+  - type: markdown
+    attributes:
+      value: |
+        Use este formulário para propor uma nova funcionalidade, melhoria ou ajuste relevante no CRM da Escola Coude.
+
+        Lembre-se: o Jira é a fonte oficial da sprint. Esta issue serve para registrar a proposta, discutir a solução e manter rastreabilidade técnica.
+
+        Não inclua dados reais de alunos, leads, responsáveis, candidatos, tokens ou credenciais.
+
+  - type: input
+    id: summary
+    attributes:
+      label: Resumo
+      description: "Descreva a funcionalidade em uma frase curta."
+      placeholder: "Adicionar filtro de contatos por status no funil"
+    validations:
+      required: true
+
+  - type: input
+    id: jira_key
+    attributes:
+      label: Código da tarefa no Jira
+      description: "Informe o código da tarefa relacionada, se existir."
+      placeholder: "SCRUM-20"
+
+  - type: dropdown
+    id: affected_repository
+    attributes:
+      label: Repositório principal
+      description: "Selecione o repositório mais afetado pela funcionalidade."
+      options:
+        - crm-backend
+        - crm-frontend
+        - crm-infra
+        - crm-shared-libs
+        - docs-engineering-handbook
+        - .github
+        - não sei
+    validations:
+      required: true
+
+  - type: dropdown
+    id: affected_area
+    attributes:
+      label: Área ou módulo
+      description: "Selecione a área mais relacionada."
+      options:
+        - autenticação
+        - contatos
+        - alunos
+        - cursos
+        - matrículas
+        - funil
+        - conversas
+        - whatsapp
+        - pagamentos
+        - relatórios
+        - backend
+        - frontend
+        - infraestrutura
+        - documentação
+        - qa
+        - outro
+    validations:
+      required: true
+
   - type: textarea
     id: problem
     attributes:
-      label: Problem Statement
-      description: What problem does this feature solve?
+      label: Problema que a funcionalidade resolve
+      description: "Explique qual problema real da escola, do time ou do sistema esta funcionalidade resolve."
+      placeholder: |
+        Hoje o atendente não consegue filtrar contatos por etapa do funil.
+        Isso dificulta acompanhar leads que precisam de retorno.
     validations:
       required: true
+
+  - type: dropdown
+    id: users_affected
+    attributes:
+      label: Usuário mais impactado
+      description: "Quem será mais beneficiado por esta funcionalidade?"
+      options:
+        - atendimento
+        - secretaria
+        - coordenação
+        - direção
+        - professores
+        - alunos
+        - leads
+        - equipe técnica
+        - não sei
+    validations:
+      required: true
+
   - type: textarea
     id: solution
     attributes:
-      label: Proposed Solution
-    validations:
-      required: true
-  - type: textarea
-    id: criteria
-    attributes:
-      label: Acceptance Criteria
+      label: Solução proposta
+      description: "Descreva como você imagina que a funcionalidade deveria funcionar."
       placeholder: |
-        - [ ] Criterion 1
-        - [ ] Criterion 2
+        Adicionar um filtro na tela de contatos permitindo selecionar a etapa do funil.
+        O backend deve aceitar um parâmetro de consulta com o status desejado.
     validations:
       required: true
+
+  - type: textarea
+    id: acceptance_criteria
+    attributes:
+      label: Critérios de aceite
+      description: "Liste os critérios necessários para considerar a funcionalidade pronta."
+      placeholder: |
+        - [ ] Usuário consegue filtrar contatos por etapa do funil
+        - [ ] Backend retorna apenas contatos da etapa selecionada
+        - [ ] Frontend exibe estado de loading
+        - [ ] Frontend exibe mensagem quando não houver resultados
+    validations:
+      required: true
+
+  - type: textarea
+    id: out_of_scope
+    attributes:
+      label: Fora do escopo
+      description: "Informe o que não deve ser feito nesta entrega."
+      placeholder: |
+        - Não implementar exportação para Excel nesta tarefa
+        - Não alterar regras de permissão nesta tarefa
+
   - type: textarea
     id: alternatives
     attributes:
-      label: Alternatives Considered
+      label: Alternativas consideradas
+      description: "Informe outras soluções pensadas, se houver."
+
+  - type: textarea
+    id: dependencies
+    attributes:
+      label: Dependências
+      description: "Informe se depende de outra tarefa, endpoint, design, aprovação ou decisão técnica."
+      placeholder: "Depende da task SCRUM-00 ou de definição do Tech Lead."
+
+  - type: checkboxes
+    id: security_confirmation
+    attributes:
+      label: Confirmação de segurança e LGPD
+      options:
+        - label: Confirmo que esta proposta não expõe dados pessoais desnecessários e não inclui informações sensíveis.
+          required: true

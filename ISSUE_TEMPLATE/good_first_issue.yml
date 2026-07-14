@@ -1,43 +1,148 @@
-name: Good First Issue
-description: A task suitable for junior developers
+name: Tarefa para iniciantes
+description: Crie uma tarefa adequada para membros juniores
+title: "[Good First Issue] "
 labels: ["good first issue", "status: needs-triage"]
+
 body:
-  - type: textarea
-    id: what
+  - type: markdown
     attributes:
-      label: What to do
-      description: Plain language description
+      value: |
+        Use este formulário para criar tarefas simples, bem descritas e adequadas para membros iniciantes.
+
+        Uma boa tarefa para iniciante deve ter escopo pequeno, caminho claro, critérios de aceite objetivos e baixo risco para o projeto.
+
+  - type: input
+    id: jira_key
+    attributes:
+      label: Código da tarefa no Jira
+      description: "Informe o código da tarefa relacionada, se existir."
+      placeholder: "SCRUM-30"
+
+  - type: dropdown
+    id: affected_repository
+    attributes:
+      label: Repositório
+      description: "Selecione o repositório onde a tarefa será feita."
+      options:
+        - crm-backend
+        - crm-frontend
+        - crm-infra
+        - crm-shared-libs
+        - docs-engineering-handbook
+        - .github
+        - não sei
     validations:
       required: true
-  - type: textarea
-    id: where
+
+  - type: dropdown
+    id: affected_area
     attributes:
-      label: Where to look
+      label: Área
+      description: "Selecione a área da tarefa."
+      options:
+        - autenticação
+        - backend
+        - frontend
+        - infraestrutura
+        - banco de dados
+        - redis
+        - docker
+        - nginx
+        - documentação
+        - qa
+        - github
+        - outro
+    validations:
+      required: true
+
+  - type: textarea
+    id: what_to_do
+    attributes:
+      label: O que deve ser feito?
+      description: "Explique a tarefa em linguagem simples."
       placeholder: |
-        - File: `src/modules/contacts/contacts.service.ts`
-        - Function: `findAll()`
+        Atualizar o README do crm-infra com os comandos para subir o Docker Compose.
     validations:
       required: true
+
   - type: textarea
-    id: criteria
+    id: where_to_look
     attributes:
-      label: Acceptance Criteria
+      label: Onde olhar?
+      description: "Informe arquivos, pastas, funções, páginas ou comandos relevantes."
       placeholder: |
-        - [ ] Criterion 1
-        - [ ] Criterion 2
+        - Arquivo: README.md
+        - Pasta: docker/
+        - Comando: docker compose up -d
     validations:
       required: true
+
   - type: textarea
-    id: hints
+    id: expected_result
     attributes:
-      label: Hints
-      description: Optional tips, links, or approach suggestions
+      label: Resultado esperado
+      description: "Explique o que deve existir ao final da tarefa."
+      placeholder: |
+        O README deve permitir que uma pessoa nova suba o ambiente local do zero.
+    validations:
+      required: true
+
+  - type: textarea
+    id: acceptance_criteria
+    attributes:
+      label: Critérios de aceite
+      description: "Liste os critérios que tornam a tarefa pronta."
+      placeholder: |
+        - [ ] README tem seção de pré-requisitos
+        - [ ] README explica como clonar os repositórios
+        - [ ] README explica como copiar o .env
+        - [ ] README explica como subir os containers
+    validations:
+      required: true
+
   - type: dropdown
     id: difficulty
     attributes:
-      label: Difficulty
+      label: Dificuldade estimada
       options:
-        - "⭐ Beginner (2–4 hours)"
-        - "⭐⭐ Intermediate (4–8 hours)"
+        - Iniciante - 2 a 4 horas
+        - Intermediário - 4 a 8 horas
     validations:
       required: true
+
+  - type: textarea
+    id: prerequisites
+    attributes:
+      label: Conhecimentos necessários
+      description: "Liste conhecimentos mínimos para executar a tarefa."
+      placeholder: |
+        - Git básico
+        - Markdown básico
+        - Docker básico
+
+  - type: textarea
+    id: hints
+    attributes:
+      label: Dicas
+      description: "Inclua links, comandos ou orientações que ajudem o membro júnior."
+      placeholder: |
+        Consulte o arquivo standards/pr-guidelines.md antes de abrir o Pull Request.
+
+  - type: input
+    id: mentor
+    attributes:
+      label: Pessoa de apoio
+      description: "Informe quem pode ajudar em caso de dúvida."
+      placeholder: "Thiago Cerqueira"
+
+  - type: checkboxes
+    id: readiness
+    attributes:
+      label: Confirmação de qualidade da tarefa
+      options:
+        - label: A tarefa tem escopo pequeno e claro.
+          required: true
+        - label: A tarefa possui critérios de aceite objetivos.
+          required: true
+        - label: A tarefa não exige acesso a dados sensíveis.
+          required: true

@@ -1,39 +1,153 @@
-name: RFC (Architecture Decision)
-description: Propose an architecture or process change
-labels: ["rfc: needs-discussion"]
+name: RFC de arquitetura ou processo
+description: Proponha uma decisão técnica, arquitetural ou de processo
+title: "[RFC] "
+labels: ["rfc: needs-discussion", "status: needs-triage"]
+
 body:
-  - type: input
-    id: title
+  - type: markdown
     attributes:
-      label: RFC Title
-      placeholder: "RFC-001: Choose database ORM"
+      value: |
+        Use este formulário para propor mudanças relevantes de arquitetura, tecnologia, processo ou governança.
+
+        Exemplos:
+        - Trocar uma tecnologia principal
+        - Alterar estratégia de autenticação
+        - Criar novo padrão de arquitetura
+        - Mudar fluxo de branches
+        - Adicionar nova ferramenta crítica
+        - Integrar serviço externo
+
+        Se a decisão for aceita, ela deve ser registrada na documentação do projeto.
+
+  - type: input
+    id: rfc_title
+    attributes:
+      label: Título da RFC
+      description: "Dê um título claro para a proposta."
+      placeholder: "RFC-001: Padronizar autenticação com Laravel Sanctum"
     validations:
       required: true
+
+  - type: input
+    id: jira_key
+    attributes:
+      label: Código da tarefa no Jira
+      description: "Informe o código da tarefa relacionada, se existir."
+      placeholder: "SCRUM-40"
+
+  - type: dropdown
+    id: scope
+    attributes:
+      label: Escopo da decisão
+      description: "Selecione a área impactada."
+      options:
+        - arquitetura
+        - backend
+        - frontend
+        - banco de dados
+        - infraestrutura
+        - devops
+        - segurança
+        - processo
+        - documentação
+        - integração externa
+        - outro
+    validations:
+      required: true
+
   - type: textarea
     id: context
     attributes:
-      label: Context
-      description: Why is this decision needed now?
+      label: Contexto
+      description: "Explique o problema, necessidade ou oportunidade que motivou a proposta."
+      placeholder: |
+        Atualmente temos autenticação parcialmente implementada.
+        Precisamos definir um padrão para login, logout e proteção de endpoints.
     validations:
       required: true
+
   - type: textarea
     id: proposal
     attributes:
-      label: Proposal
+      label: Proposta
+      description: "Explique a solução sugerida."
+      placeholder: |
+        Usar Laravel Sanctum para autenticação da API e padronizar todos os endpoints privados com middleware auth:sanctum.
     validations:
       required: true
+
   - type: textarea
     id: alternatives
     attributes:
-      label: Alternatives Considered
+      label: Alternativas consideradas
+      description: "Liste outras opções avaliadas."
+      placeholder: |
+        1. JWT com pacote externo
+        2. Laravel Passport
+        3. Sessão tradicional
     validations:
       required: true
+
   - type: textarea
     id: tradeoffs
     attributes:
-      label: Trade-offs
-  - type: input
-    id: deadline
+      label: Prós, contras e impactos
+      description: "Explique os benefícios, custos, riscos e consequências da decisão."
+      placeholder: |
+        Prós:
+        - Integração nativa com Laravel
+        - Menos dependência externa
+
+        Contras:
+        - Exige cuidado com armazenamento do token no frontend
+
+  - type: textarea
+    id: risks
     attributes:
-      label: Decision Deadline
-      placeholder: "YYYY-MM-DD"
+      label: Riscos
+      description: "Liste os riscos técnicos, de segurança, prazo ou manutenção."
+      placeholder: |
+        - Time pode implementar autenticação de formas diferentes
+        - Frontend pode armazenar token em local inadequado
+
+  - type: textarea
+    id: sprint_impact
+    attributes:
+      label: Impacto na sprint atual
+      description: "Explique se essa decisão afeta tarefas em andamento."
+      placeholder: |
+        Impacta SCRUM-10, SCRUM-11 e SCRUM-12.
+
+  - type: input
+    id: decision_deadline
+    attributes:
+      label: Prazo para decisão
+      description: "Informe até quando esta decisão precisa ser tomada."
+      placeholder: "2026-07-20"
+
+  - type: input
+    id: decision_owner
+    attributes:
+      label: Responsável pela decisão
+      description: "Informe quem deve conduzir ou aprovar a decisão."
+      placeholder: "Thiago Cerqueira"
+
+  - type: textarea
+    id: docs_to_update
+    attributes:
+      label: Documentações que precisam ser atualizadas
+      description: "Liste arquivos que devem ser alterados se a decisão for aceita."
+      placeholder: |
+        - architecture/README.md
+        - standards/pr-guidelines.md
+        - README.md
+
+  - type: checkboxes
+    id: confirmation
+    attributes:
+      label: Confirmação
+      options:
+        - label: Entendo que, se aceita, esta decisão deve ser registrada na documentação do projeto.
+          required: true
+        - label: Confirmei que a proposta não inclui segredos, credenciais ou dados sensíveis.
+          required: true

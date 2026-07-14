@@ -1,0 +1,161 @@
+name: Relatório de incidente
+description: Registre um problema crítico ou interrupção de serviço
+title: "[Incidente] "
+labels: ["type: bug", "status: needs-triage"]
+
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Use este formulário para incidentes críticos, como sistema fora do ar, login indisponível, falha de banco, problema de deploy ou risco de perda de dados.
+
+        Se o incidente for P0 ou P1, avise imediatamente o Tech Lead pelo canal combinado. Não espere apenas a issue ser lida.
+
+        Não inclua senhas, tokens, chaves de API, arquivos .env, dados reais de alunos, telefones, CPF ou informações pessoais desnecessárias.
+
+  - type: input
+    id: title
+    attributes:
+      label: Título do incidente
+      description: "Resuma o incidente em uma frase."
+      placeholder: "Backend não responde após subir Docker Compose"
+    validations:
+      required: true
+
+  - type: input
+    id: jira_key
+    attributes:
+      label: Código da tarefa no Jira
+      description: "Informe o código da tarefa relacionada, se existir."
+      placeholder: "SCRUM-50"
+
+  - type: dropdown
+    id: severity
+    attributes:
+      label: Severidade
+      description: "Classifique o impacto do incidente."
+      options:
+        - P0 - Crítico, produção fora do ar
+        - P1 - Alto, funcionalidade crítica indisponível
+        - P2 - Médio, problema importante com alternativa temporária
+        - P3 - Baixo, problema menor
+    validations:
+      required: true
+
+  - type: dropdown
+    id: environment
+    attributes:
+      label: Ambiente afetado
+      options:
+        - local
+        - desenvolvimento
+        - staging
+        - produção
+        - não sei
+    validations:
+      required: true
+
+  - type: dropdown
+    id: affected_service
+    attributes:
+      label: Serviço afetado
+      options:
+        - backend
+        - frontend
+        - nginx
+        - postgres
+        - redis
+        - docker
+        - github
+        - jira
+        - outro
+        - não sei
+    validations:
+      required: true
+
+  - type: input
+    id: detected_at
+    attributes:
+      label: Horário em que foi identificado
+      description: "Informe data e horário aproximado."
+      placeholder: "2026-07-14 19:30"
+    validations:
+      required: true
+
+  - type: input
+    id: detected_by
+    attributes:
+      label: Identificado por
+      description: "Informe quem percebeu o problema."
+      placeholder: "Thiago Cerqueira"
+    validations:
+      required: true
+
+  - type: textarea
+    id: impact
+    attributes:
+      label: Impacto
+      description: "Explique quem ou o que foi afetado."
+      placeholder: |
+        O backend não responde em localhost:8000.
+        O time de frontend não consegue testar a integração com login.
+    validations:
+      required: true
+
+  - type: textarea
+    id: symptoms
+    attributes:
+      label: Sintomas observados
+      description: "Descreva mensagens de erro, comportamento inesperado ou falhas percebidas."
+      placeholder: |
+        - Container backend reinicia constantemente
+        - Nginx retorna 502
+        - Logs mostram erro de conexão com PostgreSQL
+    validations:
+      required: true
+
+  - type: textarea
+    id: actions_taken
+    attributes:
+      label: Ações já tomadas
+      description: "Informe o que já foi tentado."
+      placeholder: |
+        - Rodei docker compose down
+        - Rodei docker compose up -d --build
+        - Verifiquei logs do backend
+
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Evidências
+      description: "Cole logs sanitizados, prints ou respostas de comandos."
+      placeholder: |
+        Cole aqui logs sem dados sensíveis.
+
+  - type: dropdown
+    id: current_status
+    attributes:
+      label: Status atual
+      options:
+        - aberto
+        - em investigação
+        - mitigado temporariamente
+        - resolvido
+        - aguardando validação
+    validations:
+      required: true
+
+  - type: input
+    id: current_owner
+    attributes:
+      label: Responsável atual
+      description: "Informe quem está conduzindo a investigação."
+      placeholder: "Thiago Cerqueira"
+
+  - type: checkboxes
+    id: security_confirmation
+    attributes:
+      label: Confirmação de segurança
+      options:
+        - label: Confirmo que não incluí senhas, tokens, chaves de API, arquivos .env, dados reais de alunos ou informações pessoais desnecessárias.
+          required: true

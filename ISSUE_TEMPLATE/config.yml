@@ -1,0 +1,14 @@
+blank_issues_enabled: false
+
+contact_links:
+  - name: Manual de Engenharia
+    url: https://github.com/coude-jr-26/docs-engineering-handbook
+    about: Consulte padrões, fluxo de Pull Request, Definition of Done e organização dos times.
+
+  - name: Organização GitHub
+    url: https://github.com/coude-jr-26
+    about: Acesse os repositórios da organização Coude Jr 2026.1.
+
+  - name: Dúvida sobre acesso
+    url: https://github.com/coude-jr-26/docs-engineering-handbook/blob/main/getting-started/01-org-overview.md
+    about: Veja como funcionam times, permissões e acesso aos repositórios.

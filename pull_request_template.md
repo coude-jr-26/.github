@@ -9,8 +9,8 @@
 - [ ] Testes
 - [ ] Chore (ferramentas, dependências)
 
-## Issue relacionada
-Fecha #
+## Jira
+[SCRUM-X](https://limalipe355.atlassian.net/browse/SCRUM-X)
 
 ## Alterações realizadas
 -

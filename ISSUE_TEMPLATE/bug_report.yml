@@ -1,49 +1,148 @@
-name: Bug Report
-description: Report a bug or unexpected behavior
+name: Relatório de bug
+description: Registre um erro ou comportamento inesperado no CRM
+title: "[Bug] "
 labels: ["type: bug", "status: needs-triage"]
+
 body:
+  - type: markdown
+    attributes:
+      value: |
+        Use este formulário para registrar bugs encontrados no CRM da Escola Coude.
+
+        Antes de abrir a issue, verifique se já existe uma issue parecida.
+
+        Não inclua senhas, tokens, chaves de API, arquivos .env, dados reais de alunos, telefones, CPF, e-mails pessoais ou qualquer informação sensível.
+
   - type: input
     id: summary
     attributes:
-      label: Summary
-      description: One sentence describing the bug
+      label: Resumo
+      description: "Descreva o bug em uma frase curta."
+      placeholder: "Login retorna erro 500 ao usar credenciais inválidas"
     validations:
       required: true
+
+  - type: input
+    id: jira_key
+    attributes:
+      label: Código da tarefa no Jira
+      description: "Informe o código da tarefa relacionada, se existir."
+      placeholder: "SCRUM-15"
+
+  - type: dropdown
+    id: affected_repository
+    attributes:
+      label: Repositório afetado
+      description: "Selecione o repositório onde o problema foi identificado."
+      options:
+        - crm-backend
+        - crm-frontend
+        - crm-infra
+        - crm-shared-libs
+        - docs-engineering-handbook
+        - .github
+        - não sei
+    validations:
+      required: true
+
+  - type: dropdown
+    id: affected_area
+    attributes:
+      label: Área afetada
+      description: "Selecione a área mais relacionada ao problema."
+      options:
+        - autenticação
+        - backend
+        - frontend
+        - infraestrutura
+        - banco de dados
+        - redis
+        - docker
+        - nginx
+        - documentação
+        - qa
+        - github
+        - outro
+    validations:
+      required: true
+
+  - type: dropdown
+    id: environment
+    attributes:
+      label: Ambiente
+      description: "Informe onde o bug aconteceu."
+      options:
+        - local
+        - desenvolvimento
+        - staging
+        - produção
+        - não sei
+    validations:
+      required: true
+
   - type: dropdown
     id: severity
     attributes:
-      label: Severity
+      label: Severidade
+      description: "Classifique o impacto do bug."
       options:
-        - P0 - Critical (production down)
-        - P1 - High (major feature broken)
-        - P2 - Medium (feature partially broken)
-        - P3 - Low (minor issue)
+        - P0 - Crítico, produção fora do ar
+        - P1 - Alto, funcionalidade principal quebrada
+        - P2 - Médio, funcionalidade parcialmente quebrada
+        - P3 - Baixo, problema menor
     validations:
       required: true
+
   - type: textarea
     id: steps
     attributes:
-      label: Steps to Reproduce
+      label: Passos para reproduzir
+      description: "Explique o caminho para reproduzir o bug."
       placeholder: |
-        1. Go to...
-        2. Click on...
-        3. See error
+        1. Acesse a tela de login
+        2. Informe um e-mail inválido
+        3. Clique em entrar
+        4. Observe o erro
     validations:
       required: true
+
   - type: textarea
     id: expected
     attributes:
-      label: Expected Behavior
+      label: Comportamento esperado
+      description: "Explique o que deveria acontecer."
+      placeholder: "O sistema deveria retornar uma mensagem de credenciais inválidas."
     validations:
       required: true
+
   - type: textarea
     id: actual
     attributes:
-      label: Actual Behavior
+      label: Comportamento atual
+      description: "Explique o que aconteceu de fato."
+      placeholder: "O sistema retorna erro 500."
     validations:
       required: true
-  - type: input
-    id: environment
+
+  - type: textarea
+    id: evidence
     attributes:
-      label: Environment
-      placeholder: "OS, Node version, Browser, etc."
+      label: Evidências
+      description: "Inclua prints, logs ou respostas da API, sem dados sensíveis."
+      placeholder: |
+        Cole aqui prints, logs sanitizados ou resposta da API.
+
+  - type: textarea
+    id: workaround
+    attributes:
+      label: Existe solução temporária?
+      description: "Informe se existe alguma forma temporária de contornar o problema."
+      placeholder: "Exemplo: limpar cache, reiniciar container ou usar outro fluxo."
+
+  - type: checkboxes
+    id: security_confirmation
+    attributes:
+      label: Confirmação de segurança
+      options:
+        - label: Confirmo que não incluí senhas, tokens, chaves de API, arquivos .env, dados reais de alunos ou informações pessoais desnecessárias.
+          required: true
